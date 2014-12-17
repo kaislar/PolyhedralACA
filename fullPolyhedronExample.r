@@ -13,20 +13,4 @@ pref_example <- matrix( c(0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1), nrow=1, ncol
 
 upperBound_example <- 100
 
-
-q <- dim(X_example)[1]
-p <- dim(X_example)[2]
-
-zeros <- matrix(0,nrow=q,ncol=p)
-bigX <- rbind( cbind(X_example, zeros), cbind(diag(p),diag(p)))
-bigA <- cbind( a_example, matrix(upperBound_example, nrow=1, ncol=p))
-bigPref <- cbind(pref_example, matrix(1,nrow=1,ncol=p))
-
-reducedBigX <- bigX[,which(bigPref>0)]
-reducedX <- X_example[,which(pref_example>0)]
-
-qr <- dim(reducedBigX)[1]
-pr <- dim(reducedBigX)[2]
-
-
-
+polyhedralACA(X_example, a_example, pref_example, upperBound_example)
