@@ -49,6 +49,11 @@ interiorPoint <- function(X,a){
 }
 
 rescale <- function(vec){
+  #' Rescales an approximate solution to the center of a polyhedron
+  #' 
+  #' @param vec vector describing the approximate center of the polyehdron
+  #' @return approximation of the center that has been rescaled
+
   p <- (length(vec)-1)/2
   
   rescaled <- sapply(seq_along(vec[1:p]), function(i){ if(vec[p+1] > 0){return(vec[i]/tail(vec,n=1))}else{return(0)} })
@@ -89,10 +94,15 @@ findCenter <- function(X,a, x0){
   return(center)  
 }
 
-reshape  <- function(center, pref){
-  
+reshape  <- function(originalVector, pref){
+  #' Reshapes the a vector to match attribute level preferences
+  #' 
+  #' @param orginalVector vector to be reshaped
+  #' @param pref attribute level preferences. 
+  #' @return originalVector reshaped to match non-zero levels
+
   vec <- matrix(0, nrow=1, ncol=length(pref))
-  vec[,which(pref >0)] <- center[1:length(which(pref>0))]
+  vec[,which(pref >0)] <- originalVector[1:length(which(pref>0))]
   
   return(vec)  
 }
@@ -119,14 +129,19 @@ majorAxis <- function(X, center, pref){
   M <- U2 - XNormed %*% U2
   
   eigenSys <- eigen(M)
-  minIndx <- which.min( eigenSys$values[which(eigenSys$values>1e-12)])
+  minIndx <- which.min( eigenSys$values[which(Re(eigenSys$values)>1e-12)])
   
   return(eigenSys$vectors[,minIndx])
 }
 
 resizedPolyhedron <- function( X, a){
-  qr <- dim(X)[1]
-  pr <- dim(X)[2]
+  #' Resize the polyhedron describe by X and a to be non-empty
+  #'
+  #' @param X matrix of question design vectors describing an empty/infeasible polyhedron
+  #' @param a vector of responses to each conjoint question
+  #' @return minimum adjustment factor delta to adjust the polyhedron so that it is non-empty
+
+  qr <- dim(X)[1]; pr <- dim(X)[2];
   
   f <- function(x){ return( abs(tail(x,n=1))) }
   
@@ -156,7 +171,10 @@ polyhedralACA <- function(X, a, pref, upperBound){
   #' @param a a vector of responses/ratings to each of the questions asked
   #' @param pref an ordering of the attribute levels
   #' @param uppberBound an arbitrary large number to bound the computation.
-  #' @return a vector that points in the direction of the next best question.
+  #' @return a list containing: 
+  #'        $nextCard - a vector that points in the direction of the next question
+  #'        $est - the estimate of the utilities for each of the attributes given the questions and responses
+  #'        $delta - NULL. Adjustment factor needed if polyhedron is empty. NULL in this case
   #' 
   
   q <- dim(X)[1]
@@ -177,10 +195,25 @@ polyhedralACA <- function(X, a, pref, upperBound){
   analytic_center <- reshape( center, pref)
   nextQuesVector <- reshape( axis, pref)
   
-  return(list(nextCard = nextQuesVector, est = analytic_center))
+  return(list(nextCard = Re(nextQuesVector), est = Re(analytic_center), delta = NULL))
 }
 
 infeasibleACA <- function(X, a, pref, upperBound){
+  #' Polyhedral Adaptive Conjoint algorithm for infeasible/empty polyhedrons. Based on previous questions (X) asked to 
+  #' respondents, the responses (a), and an enumeration of the attributed from
+  #' least preferrable to most preferable (pref) plus an arbitrary cutoff (upperBound), the
+  #' algorithm gives the next question to ask that reduces the phase space of utilities 
+  #' the fastest. See Toubia et. al (2003) paper.
+  #' 
+  #' @param X the matrix of question designs asked.
+  #' @param a a vector of responses/ratings to each of the questions asked
+  #' @param pref an ordering of the attribute levels
+  #' @param uppberBound an arbitrary large number to bound the computation.
+  #' @return a list containing: 
+  #'        $nextCard - a vector that points in the direction of the next question
+  #'        $est - the estimate of the utilities for each of the attributes given the questions and responses
+  #'        $delta - Adjustment factor needed to make the polyhedron non-empty
+ 
   q<- dim(X)[1]; p<- dim(X)[2];
   
   A <- rbind( cbind(X, diag(q), matrix(0, nrow=q, ncol=q)), 
@@ -215,5 +248,5 @@ infeasibleACA <- function(X, a, pref, upperBound){
   analytic_center <- reshape( center, pref)
   nextQuesVector <- reshape( axis, pref)
   
-  return(list(nextCard = nextQuesVector, est = analytic_center))
+  return(list(nextCard = Re(nextQuesVector), est = Re(analytic_center), delta = delta))
 }
