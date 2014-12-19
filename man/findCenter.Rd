@@ -5,7 +5,8 @@
 %%  ~~function to do ... ~~
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Finds an improved estimate of the polyhedron described by the matrix X of question designs and
+vector of answers a starting from an initial guess x0. 
 }
 \usage{
 findCenter(X, a, x0)
@@ -13,24 +14,19 @@ findCenter(X, a, x0)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{X}{
-%%     ~~Describe \code{X} here~~
+Augmented matrix describing polyhedron/question designs
 }
   \item{a}{
-%%     ~~Describe \code{a} here~~
+Vector of responses for each question row in X
 }
   \item{x0}{
-%%     ~~Describe \code{x0} here~~
-}
+Initial point inside the polyhedron
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+The approximate center of the polyhedron described by X and a.
 }
 \references{
 %% ~put references to the literature/web site here ~

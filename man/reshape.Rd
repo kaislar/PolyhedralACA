@@ -5,7 +5,7 @@
 %%  ~~function to do ... ~~
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Reshapes the a vector to match attribute level preferences
 }
 \usage{
 reshape(originalVector, pref)
@@ -13,21 +13,17 @@ reshape(originalVector, pref)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{originalVector}{
-%%     ~~Describe \code{originalVector} here~~
+Vector to be reshaped
 }
   \item{pref}{
-%%     ~~Describe \code{pref} here~~
+Attribute level preferences. 
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+originalVector reshaped to match non-zero levels of pref.
 }
 \references{
 %% ~put references to the literature/web site here ~

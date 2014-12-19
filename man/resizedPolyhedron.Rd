@@ -1,11 +1,10 @@
 \name{resizedPolyhedron}
 \alias{resizedPolyhedron}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{
-%%  ~~function to do ... ~~
+\title{Resize the polyhedron describe by X and a to be non-empty
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Create a non-empty polyhedron X and a + delta by finding the smallest delta so that the system is non-empty.
 }
 \usage{
 resizedPolyhedron(X, a)
@@ -13,21 +12,17 @@ resizedPolyhedron(X, a)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{X}{
-%%     ~~Describe \code{X} here~~
+Matrix of question design vectors describing an empty/infeasible polyhedron
 }
   \item{a}{
-%%     ~~Describe \code{a} here~~
+Vector of responses to each conjoint question
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Returns a minimum adjustment factor delta to adjust the polyhedron X,a so that it is non-empty
 }
 \references{
 %% ~put references to the literature/web site here ~

@@ -5,7 +5,7 @@
 %%  ~~function to do ... ~~
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Rescales an approximate solution to the center of a polyhedron
 }
 \usage{
 rescale(vec)
@@ -13,18 +13,14 @@ rescale(vec)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{vec}{
-%%     ~~Describe \code{vec} here~~
+Vector describing the approximate center of the polyehdron
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Approximation of the center that has been rescaled
 }
 \references{
 %% ~put references to the literature/web site here ~

@@ -2,10 +2,14 @@
 \alias{polyhedralACA}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Polyhedral Adaptive Conjoint algorithm. 
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Based on previous questions (X) asked to 
+respondents, the responses (a), and an enumeration of the attributed from
+least preferrable to most preferable (pref) plus an arbitrary cutoff (upperBound), the
+algorithm gives the next question to ask that reduces the phase space of utilities 
+the fastest.
 }
 \usage{
 polyhedralACA(X, a, pref, upperBound)
@@ -13,30 +17,28 @@ polyhedralACA(X, a, pref, upperBound)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{X}{
-%%     ~~Describe \code{X} here~~
+The matrix of question designs asked.
 }
   \item{a}{
-%%     ~~Describe \code{a} here~~
+Vector of responses/ratings to each of the questions asked
 }
   \item{pref}{
-%%     ~~Describe \code{pref} here~~
+An ordering of the attribute levels
 }
   \item{upperBound}{
-%%     ~~Describe \code{upperBound} here~~
+An arbitrary large number to bound the computation.
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+\item{nextCard}{Vector that points in the direction of the next question}
+\item{est}{Estimate of the utilities for each of the attributes given the questions and responses}
+\item{delta}{NULL. Adjustment factor needed if polyhedron is empty. NULL in this case}
 }
 \references{
-%% ~put references to the literature/web site here ~
+Toubia, Simester, Hauser, Dahan, \it{Fast Polyhedral Adaptive Conjoint Estimation}, \bf{Marketing Science} (2003)
 }
 \author{
 %%  ~~who you are~~
@@ -48,12 +50,22 @@ polyhedralACA(X, a, pref, upperBound)
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{infeasibleACA}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+X <- matrix( c(0,0,1,-1,-1,1,1,-1,0,0,0,0,0,0,0,0,0,0,0,0, 
+               0,0,0,0,-1,1,0,0,0,0,1,-1,1,-1,0,0,0,0,0,0, 
+               1,-1,0,0,0,0,0,0,0,0,0,0,1,-1,0,0,0,0,-1,1, 
+               0,0,0,0,0,0,0,0,1,-1,-1,1,0,0,0,0,-1,1,0,0, 
+               -1,1,0,0,0,0,0,0,0,0,0,0,1,-1,1,-1,0,0,0,0), nrow=5, ncol=20, byrow = TRUE)
+
+a <- matrix( c(-68.6799, -9.4126, -57.002, 64.9769, -79.9109), nrow=1,ncol=5, byrow=TRUE)
+
+pref <- matrix( c(0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1), nrow=1, ncol=20, byrow=TRUE)
+
+upperBound <- 100
+
+polyhedralACA(X, a, pref, upperBound)
 
 ## The function is currently defined as
 function (X, a, pref, upperBound) 

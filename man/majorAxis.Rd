@@ -2,10 +2,11 @@
 \alias{majorAxis}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Find the major axis of an ellipse.
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Find the major axis of the ellipse described by the matrix X
+with specified center and set of preferred attribute levels.
 }
 \usage{
 majorAxis(X, center, pref)
@@ -13,24 +14,20 @@ majorAxis(X, center, pref)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{X}{
-%%     ~~Describe \code{X} here~~
+Matrix describing polyhedron/paired comparision design. This has been reduced to the preferred levels
 }
   \item{center}{
-%%     ~~Describe \code{center} here~~
+The approximate center of the polyhedron descried by matrix X
 }
   \item{pref}{
-%%     ~~Describe \code{pref} here~~
+The preferred attribute levels
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+The vector orthogonal to the longest axis of the polyhedron.
 }
 \references{
 %% ~put references to the literature/web site here ~

@@ -2,10 +2,10 @@
 \alias{interiorPoint}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Find an interior point of a polyhedron.
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Finds an interior point in the augmented question matrix X and answer vector a.
 }
 \usage{
 interiorPoint(X, a)
@@ -13,21 +13,17 @@ interiorPoint(X, a)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{X}{
-%%     ~~Describe \code{X} here~~
+Augmented matrix describing the polyhedron/conjoint cards seend
 }
   \item{a}{
-%%     ~~Describe \code{a} here~~
+User responses to each of the conjoint cards.
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+A vector describing an interior point inside the system of equations described by X and a.
 }
 \references{
 %% ~put references to the literature/web site here ~
