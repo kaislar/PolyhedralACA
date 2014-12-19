@@ -250,3 +250,26 @@ infeasibleACA <- function(X, a, pref, upperBound){
   
   return(list(nextCard = Re(nextQuesVector), est = Re(analytic_center), delta = delta))
 }
+
+ACA <- function(X, A, pref, upperBound, delta=NULL){
+    #' Main wrapper function of the polyhedral adapative conjoint
+    #'
+    #' @param X, the matrix of question designs asked
+    #' @param a, a vector of responses/ratings to each of the questions asked
+    #' @param pref, an ordering of the attribute levels
+    #' @param upperBound, an arbitrary large number to bound the computation.
+    #' @param delta, adjustment factor to make the polyhedron described by \code{X}, \code{a} non-empty. NULL by default
+    #'
+    #' @returns A list containing:
+    #' \item{nextCard}{A vector pointing along the next question vector}
+    #' \item{est}{The estimate of the utilities based on the questions and responses}
+    #' \item{delta}{Adjustment factor needed. NULL if \code{X}, \code{a} described a full polyhedron.}
+    
+    if(is.null(delta)){
+        t <- try(polyhedralACA(X, a, pref, upperBound))
+        if("try-error" %in% class(t)) t <- infeasibleACA(X, a, pref, upperBound)
+    } else{
+        t <- infeasibleACA(X, a, pref, upperBound)
+    }
+    return(t)
+}
