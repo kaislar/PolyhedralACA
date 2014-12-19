@@ -23,7 +23,7 @@ Attribute level preferences.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-originalVector reshaped to match non-zero levels of pref.
+Returns originalVector reshaped to match non-zero levels of pref.
 }
 \references{
 %% ~put references to the literature/web site here ~

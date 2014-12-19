@@ -23,7 +23,7 @@ User responses to each of the conjoint cards.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-A vector describing an interior point inside the system of equations described by X and a.
+Returns a vector describing an interior point inside the system of equations described by X and a.
 }
 \references{
 %% ~put references to the literature/web site here ~

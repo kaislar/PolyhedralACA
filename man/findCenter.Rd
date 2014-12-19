@@ -26,7 +26,7 @@ Initial point inside the polyhedron
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-The approximate center of the polyhedron described by X and a.
+Returns the approximate center of the polyhedron described by X and a.
 }
 \references{
 %% ~put references to the literature/web site here ~

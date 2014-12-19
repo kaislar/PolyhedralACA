@@ -20,7 +20,7 @@ Vector describing the approximate center of the polyehdron
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-Approximation of the center that has been rescaled
+Returns an approximation of the center that has been rescaled
 }
 \references{
 %% ~put references to the literature/web site here ~

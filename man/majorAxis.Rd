@@ -27,7 +27,7 @@ The preferred attribute levels
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-The vector orthogonal to the longest axis of the polyhedron.
+Returns the vector orthogonal to the longest axis of the polyhedron.
 }
 \references{
 %% ~put references to the literature/web site here ~

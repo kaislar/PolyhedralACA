@@ -33,6 +33,7 @@ An arbitrary large number to bound the computation.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
+Returns a list containing:
 \item{nextCard}{Vector that points in the direction of the next question}
 \item{est}{Estimate of the utilities for each of the attributes given the questions and responses}
 \item{delta}{Adjustment factor needed to make the polyhedron non-empty}
