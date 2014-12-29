@@ -5,6 +5,7 @@ Version: 0.1
 Date: 2014-12-18
 Author: B. Hsu
 Maintainer: B. Hsu <bhsu@github.com>
+Depends: R (>=1.8.0), nloptr, MASS, adagio
 Description: This is an R implementation of the fast polyhedral adaptive conjoint as described by Toubia, et. al. in Fast Polyhedral Adaptive Conjoint Estimation, Marketing Science (2003). 
 License: GNU Lesser General Public License
 LazyLoad: yes

@@ -1,4 +1,3 @@
-
 #' An R implementation of the fast polyhedral adapative conjoint analysis
 #' 
 #' \code{polyhedralACA} implements the fast polyhedral adaptive conjoint analysis for paired comparisions
