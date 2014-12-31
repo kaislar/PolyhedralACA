@@ -6,11 +6,19 @@ An R implementation of the fast polyhedral adaptive conjoint analysis.
 This is an R implementation of the fast polyhedral adaptive conjoint as described by Toubia, et. al. in Fast
 Polyhedral Adaptive Conjoint Estimation, Marketing Science (2003). 
 
+These codes are free software; you can redistribute then and/or modify them under the terms of the GNU Lesser
+General Public License as published by the Free Software Foundation; either version 2.1 of the license, or (at
+your option) any later version. 
+
+These codes are distributed in the hope that they will be useful, but WITHOUT ANY WARRANTY; without even the
+implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
 Example
 -------
 
-```R
-X <- matrix( c(0,0,1,-1,-1,1,1,-1,0,0,0,0,0,0,0,0,0,0,0,0, 
+```RDoc
+X <- matrix( 
+c(0,0,1,-1,-1,1,1,-1,0,0,0,0,0,0,0,0,0,0,0,0, 
 0,0,0,0,-1,1,0,0,0,0,1,-1,1,-1,0,0,0,0,0,0, 
 1,-1,0,0,0,0,0,0,0,0,0,0,1,-1,0,0,0,0,-1,1, 
 0,0,0,0,0,0,0,0,1,-1,-1,1,0,0,0,0,-1,1,0,0, 
