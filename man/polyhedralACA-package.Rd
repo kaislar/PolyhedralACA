@@ -1,3 +1,4 @@
+```R
 \name{polyhedralACA-package}
 \alias{polyhedralACA-package}
 \alias{polyhedralACA}
@@ -49,3 +50,4 @@ Toubia, et. al. in Fast Polyhedral Adaptive Conjoint Estimation, Marketing Scien
 \examples{
 ~~ simple examples of the most important functions ~~
 }
+```
