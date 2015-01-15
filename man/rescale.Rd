@@ -2,7 +2,7 @@
 \alias{rescale}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Rescales a vector
 }
 \description{
 Rescales an approximate solution to the center of a polyhedron
@@ -38,26 +38,4 @@ Returns an approximation of the center that has been rescaled
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (vec) 
-{
-    p <- (length(vec) - 1)/2
-    rescaled <- sapply(seq_along(vec[1:p]), function(i) {
-        if (vec[p + 1] > 0) {
-            return(vec[i]/tail(vec, n = 1))
-        }
-        else {
-            return(0)
-        }
-    })
-    return(c(rescaled, vec[(p + 1):length(vec)]))
-  }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

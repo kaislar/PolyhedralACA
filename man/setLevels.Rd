@@ -1,14 +1,14 @@
-\name{reshape}
-\alias{reshape}
+\name{setLevels}
+\alias{setLevels}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Reshapes a vector.
 }
 \description{
 Reshapes the a vector to match attribute level preferences
 }
 \usage{
-reshape(originalVector, pref)
+setLevels(originalVector, pref)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -41,20 +41,5 @@ Returns originalVector reshaped to match non-zero levels of pref.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (originalVector, pref) 
-{
-    vec <- matrix(0, nrow = 1, ncol = length(pref))
-    vec[, which(pref > 0)] <- originalVector[1:length(which(pref > 
-        0))]
-    return(vec)
-  }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

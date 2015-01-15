@@ -39,7 +39,7 @@ Returns a list containing:
 \item{delta}{NULL. Adjustment factor needed if polyhedron is empty. NULL in this case}
 }
 \references{
-Toubia, Simester, Hauser, Dahan, \it{Fast Polyhedral Adaptive Conjoint Estimation}, \bf{Marketing Science} (2003)
+Toubia, Simester, Hauser, Dahan, \emph{Fast Polyhedral Adaptive Conjoint Estimation}, \bold{Marketing Science} (2003)
 }
 \author{
 %%  ~~who you are~~
@@ -67,27 +67,4 @@ pref <- matrix( c(0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1), nrow=1, ncol=20, byr
 upperBound <- 100
 
 polyhedralACA(X, a, pref, upperBound)
-
-## The function is currently defined as
-function (X, a, pref, upperBound) 
-{
-    q <- dim(X)[1]
-    p <- dim(X)[2]
-    zeros <- matrix(0, nrow = q, ncol = p)
-    bigX <- rbind(cbind(X, zeros), cbind(diag(p), diag(p)))
-    bigA <- cbind(a, matrix(upperBound, nrow = 1, ncol = p))
-    bigPref <- cbind(pref, matrix(1, nrow = 1, ncol = p))
-    reducedBigX <- bigX[, which(bigPref > 0)]
-    c0 <- rescale(interiorPoint(reducedBigX, bigA)$par)
-    center <- findCenter(reducedBigX, bigA, c0)
-    axis <- majorAxis(X[, which(pref > 0)], center, pref)
-    analytic_center <- reshape(center, pref)
-    nextQuesVector <- reshape(axis, pref)
-    return(list(nextCard = Re(nextQuesVector), est = Re(analytic_center), 
-        delta = NULL))
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+}       

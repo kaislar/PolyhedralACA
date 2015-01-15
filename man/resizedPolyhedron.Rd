@@ -40,30 +40,4 @@ Returns a minimum adjustment factor delta to adjust the polyhedron X,a so that i
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (X, a) 
-{
-    qr <- dim(X)[1]
-    pr <- dim(X)[2]
-    f <- function(x) {
-        return(abs(tail(x, n = 1)))
-    }
-    constraints1 <- function(x) {
-        h <- numeric(qr + pr)
-        h[1:qr] <- X \%*\% x - t(a)
-        h[(qr + 1):(pr + qr)] <- x
-        return(h)
-    }
-    x0 <- runif(pr, 0, 1)
-    s <- slsqp(x0, fn = f, hin = constraints1, control = list(xtol_rel = 1e-16))
-    return(s)
-  }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

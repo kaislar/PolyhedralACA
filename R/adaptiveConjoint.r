@@ -2,11 +2,6 @@
 #' 
 #' \code{polyhedralACA} implements the fast polyhedral adaptive conjoint analysis for paired comparisions
 #' as described by Toubia et. al. (2003)
-#' 
-#'
-
-library(MASS); library(nloptr);
-library(adagio)
 
 interiorPoint <- function(X,a){
   #' Finds an interior point in the augmented question matrix X and answer vector a.
@@ -93,7 +88,7 @@ findCenter <- function(X,a, x0){
   return(center)  
 }
 
-reshape  <- function(originalVector, pref){
+setLevels  <- function(originalVector, pref){
   #' Reshapes the a vector to match attribute level preferences
   #' 
   #' @param orginalVector vector to be reshaped
@@ -191,8 +186,8 @@ polyhedralACA <- function(X, a, pref, upperBound){
   center <- findCenter(reducedBigX, bigA, c0)
   axis <- majorAxis( X[,which(pref>0)], center, pref)
   
-  analytic_center <- reshape( center, pref)
-  nextQuesVector <- reshape( axis, pref)
+  analytic_center <- setLevels( center, pref)
+  nextQuesVector <- setLevels( axis, pref)
   
   return(list(nextCard = Re(nextQuesVector), est = Re(analytic_center), delta = NULL))
 }
@@ -244,8 +239,8 @@ infeasibleACA <- function(X, a, pref, upperBound){
   center <- findCenter(reducedBigX, bigA, c0)
   axis <- majorAxis( X[,which(pref>0)], center, pref)
 
-  analytic_center <- reshape( center, pref)
-  nextQuesVector <- reshape( axis, pref)
+  analytic_center <- setLevels( center, pref)
+  nextQuesVector <- setLevels( axis, pref)
   
   return(list(nextCard = Re(nextQuesVector), est = Re(analytic_center), delta = delta))
 }

@@ -40,7 +40,7 @@ Returns a list containing:
 %% ...
 }
 \references{
-Toubia, Simester, Hauser, Dahan, \it{Fast Polyhedral Adaptive Conjoint Estimation}, \bf{Marketing Science} (2003)
+Toubia, Simester, Hauser, Dahan, \emph{Fast Polyhedral Adaptive Conjoint Estimation}, \bold{Marketing Science} (2003)
 }
 \author{
 %%  ~~who you are~~
@@ -71,41 +71,4 @@ pref <- matrix( c(0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1), nrow=1, ncol=20, byr
 upperBound <- 100
 
 infeasibleACA(X, a, pref, upperBound)
-
-## The function is currently defined as
-function (X, a, pref, upperBound) 
-{
-    q <- dim(X)[1]
-    p <- dim(X)[2]
-    A <- rbind(cbind(X, diag(q), matrix(0, nrow = q, ncol = q)), 
-        cbind(X, matrix(0, nrow = q, ncol = q), -diag(q)))
-    B <- cbind(diag(p), matrix(0, nrow = p, ncol = 2 * q))
-    bigX <- rbind(cbind(A, matrix(0, nrow = 2 * q, ncol = p)), 
-        cbind(B, diag(p)))
-    bigPref <- cbind(pref, matrix(1, nrow = 1, ncol = dim(bigX)[2] - 
-        dim(pref)[2]))
-    reducedBigX <- bigX[, which(bigPref > 0)]
-    deltaX <- rbind(cbind(X, matrix(1, nrow = q, ncol = 1)), 
-        cbind(-X, matrix(1, nrow = q, ncol = 1)), cbind(-diag(p), 
-            matrix(0, nrow = p, ncol = 1)))
-    aTemp <- cbind(a, -a, matrix(-upperBound, nrow = 1, ncol = p))
-    deltaPref <- cbind(pref, matrix(1, nrow = 1, ncol = dim(deltaX)[2] - 
-        dim(pref)[2]))
-    reducedDeltaX <- deltaX[, which(deltaPref > 0)]
-    sol <- resizedPolyhedron(reducedDeltaX, aTemp)
-    delta <- tail(sol$par, n = 1)
-    bigA <- cbind(a + delta + 0.5, a - delta - 0.5, matrix(upperBound, 
-        nrow = 1, ncol = p))
-    c0 <- rescale(interiorPoint(reducedBigX, bigA)$par)
-    center <- findCenter(reducedBigX, bigA, c0)
-    axis <- majorAxis(X[, which(pref > 0)], center, pref)
-    analytic_center <- reshape(center, pref)
-    nextQuesVector <- reshape(axis, pref)
-    return(list(nextCard = Re(nextQuesVector), est = Re(analytic_center), 
-        delta = delta))
-  }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
