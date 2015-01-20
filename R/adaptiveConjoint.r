@@ -1,6 +1,6 @@
 #' An R implementation of the fast polyhedral adapative conjoint analysis
 #' 
-#' \code{polyhedralACA} implements the fast polyhedral adaptive conjoint analysis for paired comparisions
+#' \code{fastpolyACA} implements the fast polyhedral adaptive conjoint analysis for paired comparisions
 #' as described by Toubia et. al. (2003)
 
 interiorPoint <- function(X,a){
@@ -154,7 +154,7 @@ resizedPolyhedron <- function( X, a){
   return(s)
 }
 
-polyhedralACA <- function(X, a, pref, upperBound){
+fastpolyACA <- function(X, a, pref, upperBound){
   #' Polyhedral Adaptive Conjoint algorithm. Based on previous questions (X) asked to 
   #' respondents, the responses (a), and an enumeration of the attributed from
   #' least preferrable to most preferable (pref) plus an arbitrary cutoff (upperBound), the
@@ -260,7 +260,7 @@ ACA <- function(X, A, pref, upperBound, delta=NULL){
     #' \item{delta}{Adjustment factor needed. NULL if \code{X}, \code{a} described a full polyhedron.}
     
     if(is.null(delta)){
-        t <- try(polyhedralACA(X, a, pref, upperBound))
+        t <- try(fastpolyACA(X, a, pref, upperBound))
         if("try-error" %in% class(t)) t <- infeasibleACA(X, a, pref, upperBound)
     } else{
         t <- infeasibleACA(X, a, pref, upperBound)

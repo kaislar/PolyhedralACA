@@ -22,24 +22,9 @@ Initial point inside the polyhedron
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
 Returns the approximate center of the polyhedron described by X and a.
 }
 \references{
-%% ~put references to the literature/web site here ~
 }
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
-\examples{}

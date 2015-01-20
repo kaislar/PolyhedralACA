@@ -1,6 +1,5 @@
-\name{polyhedralACA}
-\alias{polyhedralACA}
-%- Also NEED an '\alias' for EACH other topic documented here.
+\name{fastpolyACA}
+\alias{fastpolyACA}
 \title{
 Polyhedral Adaptive Conjoint algorithm. 
 }
@@ -12,9 +11,8 @@ algorithm gives the next question to ask that reduces the phase space of utiliti
 the fastest.
 }
 \usage{
-polyhedralACA(X, a, pref, upperBound)
+fastpolyACA(X, a, pref, upperBound)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{X}{
 The matrix of question designs asked.
@@ -30,7 +28,6 @@ An arbitrary large number to bound the computation.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
 Returns a list containing:
@@ -66,5 +63,5 @@ pref <- matrix( c(0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1), nrow=1, ncol=20, byr
 
 upperBound <- 100
 
-polyhedralACA(X, a, pref, upperBound)
+fastpolyACA(X, a, pref, upperBound)
 }       

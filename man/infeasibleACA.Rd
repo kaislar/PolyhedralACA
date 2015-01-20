@@ -1,6 +1,5 @@
 \name{infeasibleACA}
 \alias{infeasibleACA}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Polyhedral Adaptive Conjoint algorithm for infeasible/empty polyhedrons. 
 }
@@ -14,7 +13,6 @@ the fastest.
 \usage{
 infeasibleACA(X, a, pref, upperBound)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{X}{
 The matrix of question designs asked.
@@ -30,14 +28,12 @@ An arbitrary large number to bound the computation.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
 Returns a list containing:
 \item{nextCard}{Vector that points in the direction of the next question}
 \item{est}{Estimate of the utilities for each of the attributes given the questions and responses}
 \item{delta}{Adjustment factor needed to make the polyhedron non-empty}
-%% ...
 }
 \references{
 Toubia, Simester, Hauser, Dahan, \emph{Fast Polyhedral Adaptive Conjoint Estimation}, \bold{Marketing Science} (2003)
@@ -52,7 +48,7 @@ Toubia, Simester, Hauser, Dahan, \emph{Fast Polyhedral Adaptive Conjoint Estimat
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{polyhedralACA}}
+\code{\link{fastpolyACA}}
 }
 \examples{
 X <- matrix( c( 0,0,0,0,0,0,-1,1,0,0,0,0,0,0,0,0 ,1,-1,-1,1,

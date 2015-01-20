@@ -7,7 +7,7 @@
 }
 \description{
 This is an R implementation of the fast polyhedral adaptive conjoint as described by 
-Toubia, et. al. in Fast Polyhedral Adaptive Conjoint Estimation, Marketing Science (2003). 
+Toubia, et. al. in \emph{Fast Polyhedral Adaptive Conjoint Estimation}, \bold{Marketing Science} (2003). 
 }
 \details{
 \tabular{ll}{
@@ -21,10 +21,10 @@ LazyLoad: \tab yes\cr
 
 }
 \author{
-B. Hsu <xbhsu@github.com>
+B. Hsu
 }
 \references{
-Toubia, et. al. in Fast Polyhedral Adaptive Conjoint Estimation, Marketing Science (2003).
+Toubia, et. al. \emph{Fast Polyhedral Adaptive Conjoint Estimation}, \bold{Marketing Science} (2003).
 }
 \keyword{ survey }
 \seealso{
